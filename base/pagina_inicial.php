@@ -32,7 +32,7 @@ function curtir(cod){
 	});
 }
 </script>
-<div class="container-fluid cor-fundo">
+<div id="body" class="container-fluid cor-fundo">
 	<div class="row pad-top">
 		<div class="col-lg-3 col-md-2 col-sm-1 col-xs-0">
 			<ul class="list-group list-group-flush"><!-- passado id do usuario da sessão que está logada-->
@@ -85,14 +85,6 @@ function curtir(cod){
 			?>
 				<div class="row espaco area-post borda-post">
 					<div class="col">
-				
-					<!--<div class='row'>
-						<div class="col">
-							<img class='icone-post' src='<?php /*echo $dados['foto'];?>'>
-							<p class='nome-post'><?php echo $dados['nome'];?></p><br>
-							<small class='data-post'><?php echo date('d/M/y ',strtotime($dados['data']));*/?></small>
-						</div>
-					</div>-->
 					
 					<div class='row pad-top'>
 						<div class="col">
@@ -151,19 +143,14 @@ function curtir(cod){
 					</div><!-- col-->
 				</div> <!-- row -->
 				
-			<?php } //seleciona?>
+			<?php } //while ?>
 				<div class='row espaco'>
 					<div class='col sem-margem sem-pad'>
 						<button class='btn btn-lg btn-block btn-area-post'>Carregar mais posts</button>
 					</div>
 				</div>
-		</div>
-	</div>
-	<!--<div class="row pad-top">-->
-		<!--<div class="offset-lg-3 col-lg-5 offset-md-2 col-md-7 offset-sm-1 col-sm-9 offset-xs-0 col-xs-12">-->
-		<!--<div class="col-lg-5 col-md-7 col-sm-9 col-xs-12">
-			<?php /*while($dados = mysqli_fetch_array($seleciona)){*/?>
-		</div>
-	<!--</div>-->
-</div>
+				<div class="espaco"></div>
+		</div><!-- col-lg-5 -->
+	</div><!--row-->
+</div><!--container-fluid-->
 <?php include"rodape.php";?>

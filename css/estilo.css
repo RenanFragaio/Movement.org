@@ -104,15 +104,39 @@ height:100%;
 border-radius:100%;
 }
 
+.b-menu-perfil{
+border-radius:0;
+background-color:#42f48c;
+border-color:#42f48c;	
+}
+
+.b-menu-perfil .nav-link{
+color:#FFF;
+font-size:16px;
+font-weight:bold;
+}
+
+.b-menu-perfil .nav-link:hover{
+background-color:#75ffae;
+cursor:pointer;
+border-radius:0;
+}
+
+/*.link-perfil:hover{
+color:#FFF;
+
+}*/
+
 .area-foto-nome{	
 padding:10px;
 }
 
 .capa{
-background-image: url("../img/apple-mouse-artificial-flowers-blurred-background-1229861.jpg");
+/*background-image: url("../img/apple-mouse-artificial-flowers-blurred-background-1229861.jpg");*/
 background-color:lightblue;
 background-size:100% 100%;
 height:300px;
+/*border-radius: 4px 4px 8px 8px;*/
 }
 
 .container-nome-perfil{

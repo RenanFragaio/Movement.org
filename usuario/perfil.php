@@ -5,51 +5,56 @@
 	if(isset($_GET['id_usuario'])){
 	$id_usuario = $_GET['id_usuario'];
 	
+	/*if($id_usuario)!=($_SESSION['id_usuario']){
+		
+	}*/
+	
 	$sql = "select * from usuario where id_usuario=$id_usuario";
 	$seleciona = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 	
 	$dados = mysqli_fetch_array($seleciona);
 	
-	//$i = $dados['id_post'];
+	//$i = $dados['id_post']; utilizado em "feed_usuario.php"
 ?>
-<div class="container-fluid">
+<div id="body" class="container-fluid cor-fundo">
 	<div class="row">
-		<div class="offset-lg-1 col-lg-8 offset-md-1 col-md-8 offset-sm-1 col-sm-8 offset-xs-0 col-xs-12"> 
-		<!-- inicio da capa -->
-		<div class="row capa align-items-end">
-			<div class="col">
-				<div class="row area-foto-nome">
-					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-8 c-foto-perfil">
-							<img src="<?php echo $dados['foto_perfil'] ?>" class="img-responsive foto-perfil" />
-					</div>
-					<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
-						<div class="container-nome-perfil">
-							<div class="nome-perfil"><?php echo $dados['nome']; ?></div>
+		<div class="col">
+			<!-- inicio da capa -->
+			<div class="row capa align-items-end" style="background-image: url(<?php echo $dados['capa'];?>)">
+				<div class="col">
+					<div class="row area-foto-nome">
+						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-8 c-foto-perfil">
+								<img src="<?php echo $dados['foto_perfil'] ?>" class="img-responsive foto-perfil" />
+						</div>
+						<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+							<div class="container-nome-perfil">
+								<div class="nome-perfil"><?php echo $dados['nome']; ?></div>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-2 menu-perfil">
-						<a class='link-perfil' href=''>Sobre</a>
+					<div class="row">
+						<div class="col sem-margem">
+							<ul class="nav nav-pills nav-fill b-menu-perfil">
+							  <li class="nav-item">
+								<a class="nav-link" href='#'>Sobre</a>
+							  </li>
+							  <li class="nav-item">
+								<a class="nav-link" onclick='exibir("amigos")' href='#'>Amigos</a>
+							  </li>
+							  <li class="nav-item">
+								<a class="nav-link" onclick='exibir("pags")' href='#'>Páginas</a>
+							  </li>
+							  <li class="nav-item">
+								<a class="nav-link" onclick='exibir("config")' href='#'>Configurações</a>
+							  </li>
+							</ul>
+						</div>
 					</div>
-					<div class="col-lg-2 menu-perfil">
-						<a class='link-perfil' href=''>Amigos</a>
-					</div>
-					<div class="col-lg-2 menu-perfil">
-						<a class='link-perfil' href=''>Páginas</a>
-					</div>
-					<div class="col-lg-2 menu-perfil">
-						<a class='link-perfil' href=''>Fotos</a>
-					</div>
-					<div class="col-lg-2 menu-perfil ultimo">
-						<a class='link-perfil' href='../usuario/config_usuario.php'>Configurações</a> 
-					</div>
-				</div>
-			</div><!--col-->
-		</div><!--row-->
-		</div> <!-- coluna da capa-->
+				</div><!--col-->
+			</div><!--row-->
+		</div>
 	</div> <!-- row -->
-	<div class="row">
+	<div id="conteudo" class="row">
 		<div class="offset-lg-1 col-lg-3 offset-md-1 col-md-3 offset-sm-1 col-sm-3 offset-xs-1 col-xs-2 emp">
 			<div class="row">
 				<div class="col">
@@ -70,32 +75,39 @@
 					</div>
 				</div>
 			</div>			
-				
-					<!--<div class="nome-post">Apresentação</div>
-					<div class="bio">
-					<?php
-						/*if(!$dados['bio']){
-							echo"Adicione uma Biografia em seu perfil para que as pessoas saibam quem você é.";
-						}*/
-					?>
-					</div>
-				</div>
-			</div>
-			<div class="row justify-content-center espaco">
-				<div class="col-lg-10 borda-post">
-					<div class="nome-post">Fotos</div>
-					<div class="foto1"></div>
-				</div>
-			</div>
-		</div>-->
 		</div>
 		<div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
-		
-		<!--<div class="col-lg-5 offset-lg-3 col-md-6 offset-md-3 col-sm-6 offset-sm-3 col-xs-12">-->
 			<?php include "feed_usuario.php";?>
+			<div class='row espaco'>
+				<div class='col sem-margem sem-pad'>
+					<button class='btn btn-lg btn-block btn-area-post'>Carregar mais posts</button>
+				</div>
+			</div>
+			<div class="espaco"></div>
 		</div>
 	</div>
+	
 </div><!-- container-fluid -->
+<!--<script>
+function exibir(cod,area){
+	switch (area){
+		case "amigos":
+		pag = "amigos.php";
+		break;
+		case "pags":
+		pag = "paginas.php";
+		break;
+		case "config":
+		pag = "config.php";
+		break;
+		default:
+		return false;
+	}
+$("#conteudo").load(pag,{id_usuario=cod},function{
+	
+});
+}
+</script>-->
 <?php
 include"../base/rodape.php";
 }

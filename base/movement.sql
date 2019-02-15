@@ -135,11 +135,11 @@ on update cascade
 on delete restrict
 );
 
-insert into usuario(nome,email,senha,data_nasc,foto_perfil,nivel)
-values ('Lucas Tejedor','tejedor@email.com','tejedor123','1998-01-20','../usuario/foto/semfoto.jpg','adm');
+insert into usuario(nome,email,senha,data_nasc,foto_perfil,nivel,capa)
+values ('Lucas Tejedor','tejedor@email.com','tejedor123','1998-01-20','../usuario/foto/semfoto.jpg','adm','../usuario/capa/apple-mouse-artificial-flowers-blurred-background-1229861.jpg');
 
-insert into usuario(nome,email,senha,data_nasc,foto_perfil,nivel)
-values ('Renan Fragaio','renan@email.com','123456','1999-01-23','../usuario/foto/semfoto.jpg','basico');
+insert into usuario(nome,email,senha,data_nasc,foto_perfil,nivel,capa)
+values ('Renan Fragaio','renan@email.com','123456','1999-01-23','../usuario/foto/semfoto.jpg','basico','../usuario/capa/architecture-background-buildings-218983.jpg');
 
 insert into usuario(nome,email,senha,data_nasc,foto_perfil,nivel)
 values ('Usuario 1','u1@email.com','123456','1999-04-10','../usuario/foto/semfoto.jpg','basico');
