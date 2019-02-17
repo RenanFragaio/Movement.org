@@ -6,7 +6,7 @@ include"../base/controle.php";
 $sql = "select * from usuario";
 $seleciona = mysqli_query($conexao,$sql);
 ?>
-<div class="container-fluid">
+<div id="body" class="container-fluid">
 	<div class="row pad-top">
 		<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"> <!-- nome da pagina -->
 		<font size="5" type="bold">lista de Usuários</font>

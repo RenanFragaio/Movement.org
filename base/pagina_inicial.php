@@ -7,11 +7,11 @@ include"../base/controle.php";
 $seleciona = mysqli_query($conexao,$sql);*/
 ?>
 <!-- função javascript que mostra o tamanho da tela -->
-<!--<script>
+<script>
 	var largura = window.innerWidth;
 	var altura = window.innerHeight;
 	alert("Largura:" + largura + "  Altura:" + altura);
-</script>-->
+</script>
 <script>
 function curtir(cod){
 	
@@ -31,10 +31,20 @@ function curtir(cod){
 		$(img).attr("src","../img/curtir2.png");
 	});
 }
+
+$(document).ready(function(){
+	$("#texto").focus(function(){
+		$("#texto").attr('rows', '10');
+	});
+	$("#texto").focusout(function(){
+		$("#texto").attr('rows', '3');
+	});
+});
+
 </script>
 <div id="body" class="container-fluid cor-fundo">
 	<div class="row pad-top">
-		<div class="col-lg-3 col-md-2 col-sm-1 col-xs-0">
+		<div class="col-lg-3 col-md-3 col-sm-12 col-12">
 			<ul class="list-group list-group-flush"><!-- passado id do usuario da sessão que está logada-->
 				<a href="../usuario/perfil.php?id_usuario=<?php echo $id_usuario;?>" class="list-group-item list-group-item-action">Perfil</a>
 				<a href="../base/pagina_inicial.php" class="list-group-item list-group-item-action">Feed de Notícias</a>
@@ -43,13 +53,13 @@ function curtir(cod){
 			</ul>
 		</div>
 		<!--<div class="offset-lg-3 col-lg-5 offset-md-2 col-md-7 offset-sm-1 col-sm-9 offset-xs-0 col-xs-12">-->
-		<div class="col-lg-5 col-md-7 col-sm-9 col-xs-12">
+		<div class="col-lg-5 col-md-7 col-sm-12 col-12">
 			<div class="row">
 				<div class="col">
 					<form name="post1" method="post" action="../post/postar.php" enctype="multipart/form-data">
 						<label><b>Criar Publicação</b></label>
 						
-						<textarea class="form-control" name="conteudo" required></textarea>
+						<textarea  rows="3" id="texto" class="form-control" name="conteudo" onclick="texto()" required></textarea>
 						
 						<label for="upload-imagem" class="btn btn-primary fix">Adicionar imagem</label>
 						<input type="file" name="imagem" id="upload-imagem" />
@@ -64,7 +74,7 @@ function curtir(cod){
 			
 			<?php 
 			//$sql = "select a.id_post, a.conteudo, a.imagem, b.nome, b.foto_perfil from post a,usuario b where a.id_usuario=b.id_usuario order by id_post desc limit 4";
-			$sql = "select a.id_post, a.conteudo, a.data_hora, a.curtidas, b.nome, b.foto_perfil, c.id_midia, d.arquivo, e.id_usuario ";
+			/*$sql = "select a.id_post, a.conteudo, a.data_hora, a.curtidas, b.nome, b.foto_perfil, c.id_midia, d.arquivo, e.id_usuario ";
 			$sql .= "from post as a ";
 			$sql .= "LEFT JOIN usuario as b ";
 			$sql .= "ON a.id_usuario = b.id_usuario ";
@@ -81,69 +91,12 @@ function curtir(cod){
 			while ($dados = mysqli_fetch_array($seleciona)){
 				
 				//$i = $i + 1;
-				$i = $dados['id_post'];
+				$i = $dados['id_post'];*/
+				include"feed_noticias.php";
 			?>
-				<div class="row espaco area-post borda-post">
-					<div class="col">
-					
-					<div class='row pad-top'>
-						<div class="col">
-							<div class="c-icone-u-post">
-								<img class='icone-u-post' src='<?php echo $dados['foto_perfil'];?>' />
-							</div>
-							<div class="c-info-post">
-								<div class='nome-post'><?php echo $dados['nome'];?></div>
-								<div class='data-post'><?php echo date('d/M/y - H:i:s',strtotime($dados['data_hora']));?></div>
-							</div>
-						</div>
-					</div>
-					
-					<div class='row'>
-						<div class='col sem-margem sem-pad'>
-						<div class='conteudo-post'><?php echo $dados['conteudo'];?></div>
-						</div>
-					</div>
-					
-					<?php if($dados['arquivo']!=''){
-					echo"<div class='row'>
-						<div class='container-img-post borda-post'><img src='".$dados['arquivo']."' class='img-post'></div>
-					</div>";
-					}?>
-					
-					<div class="row"> <!--quantidade de curtidas e exibir comentarios-->
-						<div class="col">
-							<div class="texto-curtidas" id="tc<?php echo $i;?>"><?php echo $dados['curtidas'];?> Curtiram</div>
-						</div>
-					</div>
-					
-					<?php /*echo"<br>"; echo $dados['id_usuario'];*/?>
-					
-					<div class='row'>
-						<div class='col-lg-4 col-md-4 col-sm-4 col-xs-4 menu-post rd-e'>
-						<?php
-						if(!$dados['id_usuario']){
-							echo'<div class="c-i-menu-post btn-post" id="curtir'.$i.'" onclick="curtir('.$i.')">
-							<img class="icone-menu-post" id="ic'.$i.'" src="../img/curtir1.png"/>Curtir</div>';
-						}
-						else{
-							echo'<div class="c-i-menu-post btn-post cor-curtir" id="curtir'.$i.'">
-							<img class="icone-menu-post" id="ic'.$i.'" src="../img/curtir2.png"/>Curtir</div>';
-						}
-						
-						?>
-						</div> <!-- col - botao curtir -->
-						<div class='col-lg-4  col-md-4  col-sm-4 col-xs-4 menu-post'>
-						<div class="c-i-menu-post btn-post"><img class="icone-menu-post" src="../img/comments1.png"/>Comentar</div>
-						</div>
-						<div class='col-lg-4  col-md-4  col-sm-4 col-xs-4 menu-post rd-d'>
-						<div class="c-i-menu-post btn-post"><img class="icone-menu-post" src="../img/share1.png"/>Compartilhar</div>
-						</div>
-					</div>
-					
-					</div><!-- col-->
-				</div> <!-- row -->
 				
-			<?php } //while ?>
+				
+			<?php //} //while ?>
 				<div class='row espaco'>
 					<div class='col sem-margem sem-pad'>
 						<button class='btn btn-lg btn-block btn-area-post'>Carregar mais posts</button>

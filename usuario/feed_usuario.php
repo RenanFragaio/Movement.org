@@ -25,9 +25,9 @@ $seleciona = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 while($dados = mysqli_fetch_array($seleciona)){
 	$i = $dados['id_post'];
 ?>
-<div class="row espaco area-post borda-post">
-	<div class="col">
-		<div class='row pad-top'>
+<div class="row espaco">
+	<div class="col area-post borda-post2">
+		<div class="row pad-top borda-v borda-esq-dir">
 			<div class="col">
 				<div class="c-icone-u-post">
 					<img class='icone-u-post' src='<?php echo $dados['foto_perfil'];?>' />
@@ -39,7 +39,7 @@ while($dados = mysqli_fetch_array($seleciona)){
 			</div>
 		</div>
 		
-		<div class='row'>
+		<div class='row borda-esq-dir'>
 			<div class='col sem-margem sem-pad'>
 			<div class='conteudo-post'><?php echo $dados['conteudo'];?></div>
 			</div>
@@ -47,12 +47,12 @@ while($dados = mysqli_fetch_array($seleciona)){
 		
 		<?php if($dados['arquivo']!=''){
 			//echo $dados['id_midia'];
-		echo"<div class='row'>
+		echo"<div class='row borda-esq-dir'>
 			<div class='container-img-post borda-post'><img src='".$dados['arquivo']."' class='img-post'></div>
 		</div>";
 		}?>
 		
-		<div class="row"> <!--quantidade de curtidas e exibir comentarios-->
+		<div class="row borda-esq-dir"> <!--quantidade de curtidas e exibir comentarios-->
 			<div class="col">
 				<div class="texto-curtidas" id="tc<?php echo $i;?>"><?php echo $dados['curtidas'];?> Curtiram</div>
 			</div>
@@ -61,25 +61,33 @@ while($dados = mysqli_fetch_array($seleciona)){
 		<?php /*echo"<br>"; echo $dados['id_usuario'];*/?>
 		
 		<div class='row'>
-			<div class='col-lg-4 col-md-4 col-sm-4 col-xs-4 menu-post rd-e'>
+			<div class="col sem-margem sem-pad">
+				<div class="nav nav-pills nav-justified b-menu-post rd-d rd-e">
+					<div class="nav-item c-i-menu-post rd-e"><img class="icone-menu-post" src="../img/curtir1.png"/>Curtir</div>
+					<div class="nav-item c-i-menu-post"><img class="icone-menu-post" src="../img/comments1.png"/>Comentar</div>
+					<div class="nav-item c-i-menu-post rd-d"><img class="icone-menu-post" src="../img/share1.png"/>Compartilhar</div>
+				</div>
+			</div>
+			
+			<!--<div class='col-lg-4 col-md-4 col-sm-4 col-4 menu-post rd-e'>
 			<?php
-			if(!$dados['id_usuario']){
+			/*if(!$dados['id_usuario']){
 				echo'<div class="c-i-menu-post btn-post" id="curtir'.$i.'" onclick="curtir('.$i.')">
-				<img class="icone-menu-post" id="ic'.$i.'" src="../img/curtir1.png"/>Curtir</div>';
+				<img class="icone-menu-post" src="../img/comments1.png"/>Curtir</div>';
 			}
 			else{
 				echo'<div class="c-i-menu-post btn-post cor-curtir" id="curtir'.$i.'">
 				<img class="icone-menu-post" id="ic'.$i.'" src="../img/curtir2.png"/>Curtir</div>';
-			}
+			}*/
 			
 			?>
 			</div> <!-- col - botao curtir -->
-			<div class='col-lg-4  col-md-4  col-sm-4 col-xs-4 menu-post'>
+			<!--<div class='col-lg-4  col-md-4  col-sm-4 col-4 menu-post'>
 			<div class="c-i-menu-post btn-post"><img class="icone-menu-post" src="../img/comments1.png"/>Comentar</div>
 			</div>
-			<div class='col-lg-4  col-md-4  col-sm-4 col-xs-4 menu-post rd-d'>
+			<div class='col-lg-4  col-md-4  col-sm-4 col-4 menu-post rd-d'>
 			<div class="c-i-menu-post btn-post"><img class="icone-menu-post" src="../img/share1.png"/>Compartilhar</div>
-			</div>
+			</div>-->
 		</div>				
 	</div><!-- col-->
 </div> <!-- row -->

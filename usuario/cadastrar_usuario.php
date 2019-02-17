@@ -8,7 +8,7 @@
 		$nivel_cadastrando='basico';
 	}
 ?>
-<div class="container-fluid">
+<div id="body" class="container-fluid">
 
 	<div class="row pad-top">
 		<div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6 col-xs-offset-0 col-xs-12">		
