@@ -357,6 +357,9 @@ height:100%;
 border:1px solid #42f48c;	
 border-radius:4px;
 }*/
+.espaco-m{
+		margin-top:80px;
+	}
 
 @media (min-width:768px){
 	.borda-post2{
@@ -384,9 +387,6 @@ border-radius:4px;
 		margin-top:50px;
 	}
 }
-.espaco-m{
-		margin-top:80px;
-	}
 	
 .borda-v{
 	border-top:1px solid #42f48c;	

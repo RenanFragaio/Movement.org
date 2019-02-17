@@ -1,11 +1,10 @@
-drop database if exists movement;
+/*drop database if exists id6802051_movement;*/
 
-create database movement;
+create database if not exists id6802051_movement;
 
-use movement;
+use id6802051_movement;
 
-/*use id6802051_movement;*/
-
+drop table if exists usuario;
 create table usuario
 (
 id_usuario int auto_increment,
@@ -20,6 +19,7 @@ nivel varchar(30),
 Primary Key(id_usuario)
 );
 
+drop table if exists post;
 create table post
 (
 id_post int auto_increment,
@@ -30,6 +30,7 @@ curtidas int default 0,
 Primary Key(id_post)
 );
 
+drop table if exists midia_post;
 create table midia_post
 (
 id_post int,
@@ -37,6 +38,7 @@ id_midia int,
 Primary Key(id_post,id_midia)
 );
 
+drop table if exists midia;
 create table midia
 (
 id_midia int auto_increment,
@@ -46,6 +48,7 @@ arquivo varchar(255),
 Primary Key(id_midia)
 );
 
+drop table if exists amizade;
 create table amizade
 (
 id_usuario1 int,
@@ -53,6 +56,7 @@ id_usuario2 int,
 Primary Key(id_usuario1,id_usuario2)
 );
 
+drop table if exists curtir;
 create table curtir
 (
 id_usuario int,
@@ -60,6 +64,7 @@ id_post int,
 Primary Key(id_usuario,id_post)
 );
 
+drop table if exists pagina;
 create table pagina
 (
 id_pagina int auto_increment,

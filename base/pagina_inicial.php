@@ -7,11 +7,11 @@ include"../base/controle.php";
 $seleciona = mysqli_query($conexao,$sql);*/
 ?>
 <!-- função javascript que mostra o tamanho da tela -->
-<script>
+<!--<script>
 	var largura = window.innerWidth;
 	var altura = window.innerHeight;
 	alert("Largura:" + largura + "  Altura:" + altura);
-</script>
+</script>-->
 <script>
 function curtir(cod){
 	
